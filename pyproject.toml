@@ -1,0 +1,25 @@
+[project]
+name = "activeAugment"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gymnasium>=1.2.3",
+    "image-similarity-measures>=0.3.5",
+    "ipykernel>=7.1.0",
+    "lpips>=0.1.4",
+    "matplotlib>=3.10.8",
+    "pandas>=3.0.1",
+    "pydantic>=2.12.5",
+    "pypiqe>=1.2",
+    "pyyaml>=6.0.3",
+    "requests>=2.32.5",
+    "scikit-image>=0.26.0",
+    "scikit-learn>=1.8.0",
+    "seaborn>=0.13.2",
+    "timm>=1.0.25",
+    "torchmetrics>=1.8.2",
+    "torchvision>=0.25.0",
+    "tqdm>=4.67.3",
+]

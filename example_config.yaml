@@ -1,0 +1,76 @@
+experiment_name: ActiveAugment-BRISC-resnet18-tunable-badge
+config_name: badge
+model:
+  name: resnet18
+  weights_status: tunable
+dataset:
+  name: BRISC
+  seed: 0
+training:
+  num_reps: 5
+  active_epochs: 50
+  lr: 0.0001
+  batch_size: 16
+  device: cuda
+  metrics:
+  - accuracy
+  - f1_score
+  monitor: f1_score
+  do_evaluation: true
+  type: contrastive
+  lambda_con: 0.1
+  temperature: 0.07
+dataset_selection:
+  type: active
+  strategy: random
+  budgets:
+  - 10
+  - 20
+  - 50
+  - 100
+  - 200
+  - 500
+  - 800
+  continual_learning: false
+augmentation_strategy:
+  type: active
+  agent: badge
+  candidate_mode: intensity_sweep
+  k_candidates: null
+  m_select: 1
+  discrepancy:
+    weight: 0.1
+    normalize: true
+    epsilon: 0.1
+  use_annealing: false
+augmentation_space:
+  pipeline_length: 1
+  fixed_pipeline_length: true
+  augmentations:
+  - name: Flip
+    intensities: null
+  - name: Rotation
+    intensities:
+    - LOW
+    - MEDIUM
+    - HIGH
+  - name: Brightness
+    intensities:
+    - LOW
+    - MEDIUM
+    - HIGH
+  - name: GaussianNoise
+    intensities:
+    - LOW
+    - MEDIUM
+    - HIGH
+  - name: GaussianBlur
+    intensities:
+    - LOW
+    - MEDIUM
+    - HIGH
+  - name: Contrast
+    intensities:
+    - LOW
+    - MEDIUM
+    - HIGH
